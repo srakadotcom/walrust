@@ -1,0 +1,34 @@
+<chestgui title="Edytowanie struktury" type="chest" rows="1">
+  <outlinepane x="0" y="0" length="9" height="1">
+    <item id="barrier" onClick="create">
+      <displayname>&amp;cUsun strukture</displayname>
+      <properties>
+        <property>NONE</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Ulepsz na drewniaki</displayname>
+      <properties>
+        <property>WOOD</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;Ulepsz na kobla</displayname>
+      <properties>
+        <property>STONE</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Ulepsz na metal</displayname>
+      <properties>
+        <property>METAL</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Ulepsz na heavy metal</displayname>
+      <properties>
+        <property>HEAVY_METAL</property>
+      </properties>
+    </item>
+  </outlinepane>
+</chestgui>

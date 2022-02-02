@@ -1,0 +1,81 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "6.1.0"
+}
+
+group = 'pl.pogerteam'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+
+    maven {
+        url "https://repo.dmulloy2.net/repository/public/"
+        content {
+            includeGroup 'com.comphenix.protocol'
+        }
+    }
+
+    maven {
+        url 'https://repo.codemc.org/repository/maven-public/'
+        content {
+            includeGroup 'de.tr7zw'
+        }
+    }
+
+    maven {
+        url 'https://storehouse.okaeri.eu/repository/maven-public/'
+        content {
+            includeGroup 'eu.okaeri'
+        }
+    }
+}
+
+dependencies {
+    implementation 'de.tr7zw:item-nbt-api:2.9.0'
+    compileOnly 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
+    compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4+"
+    implementation 'com.github.stefvanschie.inventoryframework:IF:0.10.4'
+
+    implementation 'eu.okaeri:okaeri-configs-yaml-bukkit:3+'
+    implementation 'eu.okaeri:okaeri-configs-serdes-bukkit:3+'
+}
+
+shadowJar {
+    relocate 'com.github.stefvanschie.inventoryframework', 'pl.pogerteam.walrust.if'
+    relocate 'de.tr7zw.changeme.nbtapi', 'pl.pogerteam.nbtapi'
+    relocate 'eu.okaeri', 'pl.pogerteam.okaeri'
+}
+
+def targetJavaVersion = 16
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release = targetJavaVersion
+    }
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

@@ -1,0 +1,8 @@
+name: Walrust
+version: '${version}'
+main: pl.pogerteam.walrust.Walrust
+api-version: 1.17
+authors: [ PogerTeam, Memerurki ]
+description: Walrust!
+depend:
+  - ProtocolLib

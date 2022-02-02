@@ -1,0 +1,46 @@
+<chestgui title="Wybieranie struktury" type="chest" rows="1">
+  <outlinepane x="0" y="0" length="9" height="1">
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Podloga</displayname>
+      <properties>
+        <property>floor</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Sufit</displayname>
+      <properties>
+        <property>ceiling</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Sufit z drabina</displayname>
+      <properties>
+        <property>ladder_ceiling</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Sciana</displayname>
+      <properties>
+        <property>wall</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Sciana z drzwiami</displayname>
+      <properties>
+        <property>door_wall</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Szklana sciana</displayname>
+      <properties>
+        <property>glass_wall</property>
+      </properties>
+    </item>
+    <item id="paper" onClick="create">
+      <displayname>&amp;7Sciana z brama</displayname>
+      <properties>
+        <property>wall_gate</property>
+      </properties>
+    </item>
+  </outlinepane>
+</chestgui>
